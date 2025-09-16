@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afluente Mídia - Fluxo e Estratégia Digital</title>
+    <meta name="description" content="Transformamos a complexidade das redes sociais em um fluxo contínuo de crescimento para marcas no Brasil e em Portugal.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Importa a fonte do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        /* Variáveis de Cores e Estilos */
+        :root {
+            --primary-color: #0D1B2A;
+            --secondary-color: #415A77;
+            --accent-color: #f8f9fa;
+            --text-color: #1B263B;
+            --bg-color: #FFFFFF;
+            --cta-color: #D98324;
+            --cta-hover-color: #c57620;
+            --border-radius: 8px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --whatsapp-color: #25D366;
+        }
+
+        /* Reset Básico e Estilos Globais */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .intro-text { max-width: 700px; margin: 0 auto 50px auto; text-align: center; font-size: 1.1rem; color: var(--secondary-color); }
+
+
+        /* Header e Navegação */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            position: sticky; top: 0; z-index: 100;
+        }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 50px; transition: transform 0.3s ease; }
+        .logo img:hover { transform: scale(1.05); }
+        nav ul { list-style: none; display: flex; gap: 2rem; }
+        nav a {
+            text-decoration: none; color: var(--secondary-color); font-weight: 600;
+            transition: color 0.3s ease; position: relative; padding-bottom: 5px;
+        }
+        nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0%; height: 2px; background-color: var(--cta-color); transition: width 0.3s ease;
+        }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a:hover, nav a.active { color: var(--primary-color); }
+
+        /* Seções Principais */
+        main section { padding: 100px 0; }
+        h1, h2, h3, h4 { margin-bottom: 20px; color: var(--primary-color); }
+        h1 { font-size: 3.2rem; line-height: 1.2; }
+        h2 { font-size: 2.8rem; text-align: center; }
+        h3 { font-size: 1.5rem; }
+        p { color: var(--secondary-color); font-size: 1.1rem; }
+
+        /* Botões */
+        .cta-button {
+            display: inline-block; background-color: var(--cta-color); color: white;
+            padding: 15px 35px; border-radius: var(--border-radius); text-decoration: none;
+            font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow);
+            background-color: var(--cta-hover-color);
+        }
+        .cta-button.secondary { background-color: var(--secondary-color); }
+        .cta-button.secondary:hover { background-color: var(--primary-color); }
+
+        /* SEÇÃO INÍCIO (HERO) */
+        .hero { text-align: center; }
+        .hero h1 { max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero p { font-size: 1.25rem; margin-bottom: 30px; }
+        .pain-points .points-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px; margin-top: 50px; text-align: left;
+        }
+        .point {
+            background: white; padding: 30px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .point:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .point h3 i {
+            margin-right: 10px; color: var(--cta-color); font-size: 1.8rem;
+            vertical-align: middle;
+        }
+        .solution { background-color: var(--primary-color); text-align: center; }
+        .solution h2 { color: white; }
+        .solution p { max-width: 700px; margin: 0 auto 30px auto; color: #ccc; }
+
+        /* SEÇÃO SOBRE */
+        .manifesto-section .container { text-align: center; }
+        .manifesto-content {
+            max-width: 750px; margin: 40px auto 0 auto; text-align: left;
+            background: #f8f9fa; padding: 40px; border-radius: var(--border-radius);
+        }
+        .manifesto-content p { margin-bottom: 1.5rem; }
+        .manifesto-content h4 { text-align: center; margin-top: 30px; color: var(--cta-color); }
+
+        /* SEÇÃO PROCESSO */
+        .process-grid { display: grid; gap: 30px; margin-top: 50px; }
+        .process-step {
+            display: flex; align-items: center; gap: 30px;
+            background: white; padding: 30px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow); text-align: left;
+        }
+        .step-number {
+            font-size: 3rem; font-weight: 700; color: var(--cta-color);
+            line-height: 1; min-width: 50px; text-align: center;
+        }
+        .process-section .cta-button { margin-top: 50px; display: inline-block; }
+
+
+        /* SEÇÃO SERVIÇOS */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-top: 50px;
+        }
+        .service-card {
+            background: #f8f9fa; padding: 40px; border-radius: var(--border-radius);
+            text-align: center; display: flex; flex-direction: column;
+            box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .service-card p { margin-bottom: 30px; flex-grow: 1; }
+        .service-card h3 { color: var(--cta-color); }
+
+        /* SEÇÃO CONTATO */
+        .contact-form-section form { max-width: 600px; margin: 40px auto; text-align: left; }
+        .contact-form-section label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .contact-form-section input, .contact-form-section textarea {
+            width: 100%; padding: 15px; margin-bottom: 20px;
+            border-radius: var(--border-radius); border: 1px solid #ccc;
+            font-family: 'Poppins', sans-serif; font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form-section input:focus, .contact-form-section textarea:focus {
+            outline: none; border-color: var(--cta-color);
+            box-shadow: 0 0 0 3px rgba(217, 131, 36, 0.2);
+        }
+        .contact-form-section button { width: 100%; border: none; cursor: pointer; }
+        .contact-info { margin-top: 50px; text-align: center; }
+        .contact-info p { margin-bottom: 10px; }
+
+        /* FOOTER */
+        footer { background: #f8f9fa; text-align: center; padding: 40px 0; border-top: 1px solid #eee; }
+
+        /* BOTÃO FLUTUANTE DO WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--whatsapp-color);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1DA851;
+        }
+
+        /* ANIMAÇÕES DE SCROLL */
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .show { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .point:nth-child(2), .process-step:nth-child(2), .service-card:nth-child(2) { transition-delay: 200ms; }
+        .point:nth-child(3), .process-step:nth-child(3), .service-card:nth-child(3) { transition-delay: 400ms; }
+        .point:nth-child(4), .process-step:nth-child(4) { transition-delay: 600ms; }
+        .manifesto-content.hidden, .intro-text.hidden { transition-delay: 200ms; }
+
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            nav { display: none; }
+            main section { padding: 60px 0; }
+            .process-step { flex-direction: column; text-align: center; gap: 15px; }
+            .whatsapp-float {
+                width: 50px; height: 50px;
+                bottom: 20px; right: 20px;
+                font-size: 24px;
+            }
+        }
+    </style>
+    </head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#inicio" class="logo">
+                <img src="https://res.cloudinary.com/dwu4r8y1a/image/upload/v1758055427/Picsart_25-09-16_17-42-46-101_h0zjcu.png" alt="Logo Afluente Mídia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="active">Início</a></li>
+                    <li><a href="#sobre">Nossa Causa</a></li>
+                    <li><a href="#processo">O Fluxo</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="inicio" class="hero">
+            <div class="container">
+                <h1>Sua marca não precisa de mais ruído. Precisa de um fluxo.</h1>
+                <p>Transformamos a complexidade das redes sociais em um fluxo contínuo de crescimento para marcas no Brasil e em Portugal.</p>
+                <a href="#processo" class="cta-button">Conheça o nosso fluxo</a>
+            </div>
+        </section>
+
+        <section class="pain-points hidden">
+            <div class="container">
+                <h2>O universo digital parece caótico? Nós entendemos.</h2>
+                <div class="points-grid">
+                    <div class="point hidden">
+                        <h3><i class="fas fa-bullhorn"></i> Voz Perdida</h3>
+                        <p>Você posta, posta, posta... mas sente que está falando sozinho.</p>
+                    </div>
+                    <div class="point hidden">
+                        <h3><i class="fas fa-chart-line"></i> Algoritmos Misteriosos</h3>
+                        <p>As regras do jogo mudam toda hora e parece impossível acompanhar.</p>
+                    </div>
+                    <div class="point hidden">
+                        <h3><i class="fas fa-hand-holding-usd"></i> Resultados Frustrantes</h3>
+                        <p>O número de seguidores sobe, mas o faturamento continua o mesmo.</p>
+                    </div>
+                    <div class="point hidden">
+                        <h3><i class="fas fa-clock"></i> Tempo Escasso</h3>
+                        <p>Sua energia deveria estar focada no seu negócio, não nas redes sociais.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="solution hidden">
+            <div class="container">
+                <h2>Nossa causa é a conexão.</h2>
+                <div class="manifesto-content hidden">
+                    <h3>Manifesto Afluente Mídia</h3>
+                    <p>O digital virou ruído. Uma cacofonia de algoritmos frios, métricas de vaidade e vozes que gritam, mas nada dizem. Nós nascemos da recusa a este cenário.</p>
+                    <p><strong>Nós acreditamos em fluxo, não em interrupção.</strong> Acreditamos que a verdadeira comunicação não invade, mas convida.</p>
+                    <p><strong>Nós acreditamos no poder da nascente.</strong> Nossa base em Cuiabá não é uma limitação; é nossa fonte de identidade. É o calor humano que derrete a frieza dos dados.</p>
+                    <p><strong>Nós acreditamos em pessoas, não em avatares.</strong> Por trás de cada tela, existe uma história. Nosso trabalho é criar conversas.</p>
+                    <p><strong>Por isso, nós rejeitamos.</strong> O marketing autômato, a tirania dos números de vaidade e a agência que se esconde atrás de relatórios impessoais.</p>
+                    <h4>Do coração do Brasil, para o coração da sua marca.</h4>
+                </div>
+            </div>
+        </section>
+        
+        <section id="processo" class="process-section hidden">
+            <div class="container">
+                <h2>Grandes resultados não nascem do acaso. Nascem de um fluxo claro.</h2>
+                <p class="intro-text">A confiança é a base de qualquer parceria. Por isso, nosso processo é 100% transparente. Cada etapa foi desenhada para garantir que estamos sempre alinhados.</p>
+                <div class="process-grid">
+                    <div class="process-step hidden">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h3>IMERSÃO (A Nascente)</h3>
+                            <p>Mergulhamos fundo no seu universo: sua história, seus desafios, seu público e seus concorrentes.</p>
+                        </div>
+                    </div>
+                    <div class="process-step hidden">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h3>ESTRATÉGIA (O Mapa do Rio)</h3>
+                            <p>Com o diagnóstico em mãos, desenhamos o caminho, definindo os pilares de conteúdo e a voz da sua marca.</p>
+                        </div>
+                    </div>
+                    <div class="process-step hidden">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h3>CRIAÇÃO E GESTÃO (A Correnteza)</h3>
+                            <p>Damos vida à estratégia, produzindo conteúdos e nutrindo o relacionamento com seu público.</p>
+                        </div>
+                    </div>
+                    <div class="process-step hidden">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h3>ANÁLISE E EVOLUÇÃO (A Foz)</h3>
+                            <p>Analisamos mensalmente os dados e otimizamos a rota constantemente para garantir que sua marca prospere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="servicos" class="services-section hidden">
+             <div class="container">
+                <h2>Soluções que geram movimento.</h2>
+                <p class="intro-text">Seja qual for o estágio da sua marca, temos uma solução para criar um fluxo de comunicação poderoso e contínuo.</p>
+                <div class="services-grid">
+                    <div class="service-card hidden">
+                        <h3>Gestão de Fluxo Contínuo</h3>
+                        <p>A parceria ideal para quem busca tranquilidade e resultados constantes. Cuidamos de tudo: da estratégia à execução. Foque no seu negócio.</p>
+                        <a href="#contato" class="cta-button secondary">Quero saber mais</a>
+                    </div>
+                    <div class="service-card hidden">
+                        <h3>Impulso Estratégico</h3>
+                        <p>Você tem uma equipe interna, mas sente que falta uma direção? Oferecemos um diagnóstico profundo e um plano de ação claro para destravar seu potencial.</p>
+                        <a href="#contato" class="cta-button secondary">Quero saber mais</a>
+                    </div>
+                    <div class="service-card hidden">
+                        <h3>Projeto Nascente</h3>
+                        <p>Perfeito para marcas que estão começando. Estruturamos seus perfis do zero e criamos o plano de conteúdo inicial para você começar com uma base sólida.</p>
+                        <a href="#contato" class="cta-button secondary">Quero saber mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-form-section hidden">
+            <div class="container">
+                <h2>Vamos iniciar este fluxo?</h2>
+                <p class="intro-text">Adoraríamos ouvir a história da sua marca. Preencha o formulário abaixo ou envie uma mensagem direta.</p>
+                <form action="https://formspree.io/f/mldwyjeo" method="POST">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="empresa">Empresa / Marca</label>
+                    <input type="text" id="empresa" name="empresa">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                    <button type="submit" class="cta-button">Enviar Mensagem</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Ou fale conosco diretamente:</h3>
+                    <p><strong>Email:</strong> afluentemidia@gmail.com</p>
+                    <p><strong>WhatsApp:</strong> +55 83 99699-9840</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Afluente Mídia. Todos os direitos reservados.</p>
+            <p>Cuiabá, MT - Atendimento para todo o Brasil e Portugal.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5583996999840" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Script para animação de scroll (Fade-in)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        // Script para destacar o link de navegação ativo ao rolar
+        const sections = document.querySelectorAll('main section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' }); 
+
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
+
+    </script>
+    </body>
+</html>
