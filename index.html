@@ -3,31 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afluente Mídia - Fluxo e Estratégia Digital</title>
-    <meta name="description" content="Transformamos a complexidade das redes sociais em um fluxo contínuo de crescimento para marcas no Brasil e em Portugal.">
+    <title>Afluente Mídia - Estratégia Digital que Gera Resultados</title>
+    <meta name="description" content="Transformamos presença digital em crescimento real para marcas globais através de estratégias de redes sociais focadas em resultados.">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Importa a fonte do Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-        /* Variáveis de Cores e Estilos */
         :root {
-            --primary-color: #0D1B2A;
-            --secondary-color: #415A77;
-            --accent-color: #f8f9fa;
-            --text-color: #1B263B;
-            --bg-color: #FFFFFF;
-            --cta-color: #D98324;
-            --cta-hover-color: #c57620;
-            --border-radius: 8px;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --bg-light: #ffffff;
+            --bg-soft-gray: #f9f9f9;
+            --text-dark: #121212;
+            --text-light: #5f5f5f;
+            --accent: #D98324;
+            --accent-light: #fef0e1;
+            --border-color: #e9e9e9;
             --whatsapp-color: #25D366;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
         }
 
         /* Reset Básico e Estilos Globais */
@@ -35,192 +30,200 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 400;
         }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .intro-text { max-width: 700px; margin: 0 auto 50px auto; text-align: center; font-size: 1.1rem; color: var(--secondary-color); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Preloader */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-light); z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        .spinner {
+            width: 50px; height: 50px; border: 5px solid var(--accent-light);
+            border-top-color: var(--accent); border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        body.loaded #preloader { opacity: 0; pointer-events: none; }
 
+        /* Tipografia */
+        h1, h2, h3, h4 { line-height: 1.3; font-weight: 700; }
+        h1 { font-size: 3.5rem; letter-spacing: -1.5px; }
+        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 20px; }
+        h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        p { color: var(--text-light); margin-bottom: 20px; }
+        .section-subtitle { display: block; text-align: center; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
 
         /* Header e Navegação */
         header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 1rem 0; border-bottom: 1px solid var(--border-color);
             position: sticky; top: 0; z-index: 100;
         }
         header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 50px; transition: transform 0.3s ease; }
-        .logo img:hover { transform: scale(1.05); }
+        .logo img { height: 50px; }
+        nav { display: flex; align-items: center; gap: 30px; }
         nav ul { list-style: none; display: flex; gap: 2rem; }
         nav a {
-            text-decoration: none; color: var(--secondary-color); font-weight: 600;
-            transition: color 0.3s ease; position: relative; padding-bottom: 5px;
+            text-decoration: none; color: var(--text-light); font-weight: 600;
+            transition: color 0.3s ease; position: relative; padding: 5px 0;
         }
         nav a::after {
-            content: ''; position: absolute; bottom: 0; left: 0;
-            width: 0%; height: 2px; background-color: var(--cta-color); transition: width 0.3s ease;
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 0%; height: 2px; background-color: var(--accent); transition: width 0.3s ease;
         }
-        nav a:hover::after, nav a.active::after { width: 100%; }
-        nav a:hover, nav a.active { color: var(--primary-color); }
-
-        /* Seções Principais */
-        main section { padding: 100px 0; }
-        h1, h2, h3, h4 { margin-bottom: 20px; color: var(--primary-color); }
-        h1 { font-size: 3.2rem; line-height: 1.2; }
-        h2 { font-size: 2.8rem; text-align: center; }
-        h3 { font-size: 1.5rem; }
-        p { color: var(--secondary-color); font-size: 1.1rem; }
+        nav a:hover, nav a.active { color: var(--text-dark); }
+        nav a.active::after { width: 100%; }
+        
+        .lang-switcher button {
+            background: none; border: 1px solid var(--border-color); border-radius: 5px;
+            padding: 5px 10px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; color: var(--text-light);
+        }
+        .lang-switcher button:hover { background: var(--accent-light); color: var(--text-dark); }
+        .lang-switcher button.active { background: var(--accent); color: white; border-color: var(--accent); }
 
         /* Botões */
         .cta-button {
-            display: inline-block; background-color: var(--cta-color); color: white;
-            padding: 15px 35px; border-radius: var(--border-radius); text-decoration: none;
-            font-weight: 600; transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: inline-block; background: var(--accent); color: white;
+            padding: 16px 38px; border-radius: 50px; text-decoration: none;
+            font-weight: 600; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 131, 36, 0.3);
         }
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow);
-            background-color: var(--cta-hover-color);
-        }
-        .cta-button.secondary { background-color: var(--secondary-color); }
-        .cta-button.secondary:hover { background-color: var(--primary-color); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(217, 131, 36, 0.4); }
+        
+        /* Seções */
+        main section { padding: 120px 0; }
+        main section:nth-of-type(even) { background-color: var(--bg-soft-gray); }
 
-        /* SEÇÃO INÍCIO (HERO) */
-        .hero { text-align: center; }
-        .hero h1 { max-width: 800px; margin-left: auto; margin-right: auto; }
-        .hero p { font-size: 1.25rem; margin-bottom: 30px; }
-        .pain-points .points-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px; margin-top: 50px; text-align: left;
-        }
-        .point {
-            background: white; padding: 30px; border-radius: var(--border-radius);
-            box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .point:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
-        .point h3 i {
-            margin-right: 10px; color: var(--cta-color); font-size: 1.8rem;
-            vertical-align: middle;
-        }
-        .solution { background-color: var(--primary-color); text-align: center; }
-        .solution h2 { color: white; }
-        .solution p { max-width: 700px; margin: 0 auto 30px auto; color: #ccc; }
+        /* Hero */
+        .hero { padding-top: 100px; padding-bottom: 140px; text-align: center; }
+        .hero h1 { max-width: 850px; margin: 0 auto 20px auto; }
+        .hero p { max-width: 700px; margin: 0 auto 40px auto; font-size: 1.2rem; }
 
-        /* SEÇÃO SOBRE */
-        .manifesto-section .container { text-align: center; }
-        .manifesto-content {
-            max-width: 750px; margin: 40px auto 0 auto; text-align: left;
-            background: #f8f9fa; padding: 40px; border-radius: var(--border-radius);
-        }
-        .manifesto-content p { margin-bottom: 1.5rem; }
-        .manifesto-content h4 { text-align: center; margin-top: 30px; color: var(--cta-color); }
+        /* Diferenciais */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 60px; }
+        .feature-card { text-align: center; padding: 30px; }
+        .feature-card .icon { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
 
-        /* SEÇÃO PROCESSO */
-        .process-grid { display: grid; gap: 30px; margin-top: 50px; }
-        .process-step {
-            display: flex; align-items: center; gap: 30px;
-            background: white; padding: 30px; border-radius: var(--border-radius);
-            box-shadow: var(--shadow); text-align: left;
-        }
-        .step-number {
-            font-size: 3rem; font-weight: 700; color: var(--cta-color);
-            line-height: 1; min-width: 50px; text-align: center;
-        }
-        .process-section .cta-button { margin-top: 50px; display: inline-block; }
-
-
-        /* SEÇÃO SERVIÇOS */
-        .services-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; margin-top: 50px;
-        }
+        /* Serviços */
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-top: 60px; }
         .service-card {
-            background: #f8f9fa; padding: 40px; border-radius: var(--border-radius);
-            text-align: center; display: flex; flex-direction: column;
-            box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-light); padding: 40px; border-radius: var(--border-radius);
+            box-shadow: var(--shadow); transition: all 0.3s ease;
         }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
-        .service-card p { margin-bottom: 30px; flex-grow: 1; }
-        .service-card h3 { color: var(--cta-color); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .service-card .icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+        .service-card ul { list-style: none; margin-top: 20px; text-align: left; }
+        .service-card li { margin-bottom: 10px; color: var(--text-light); }
+        .service-card li i { color: var(--accent); margin-right: 10px; }
 
-        /* SEÇÃO CONTATO */
-        .contact-form-section form { max-width: 600px; margin: 40px auto; text-align: left; }
-        .contact-form-section label { display: block; margin-bottom: 8px; font-weight: 600; }
+        /* Processo */
+        .process-timeline { display: flex; flex-direction: column; gap: 40px; margin-top: 60px; position: relative; }
+        .process-timeline::before {
+            content: ''; position: absolute; left: 24px; top: 10px; bottom: 10px;
+            width: 2px; background-color: var(--accent-light);
+        }
+        .process-step { display: flex; gap: 30px; align-items: flex-start; position: relative; }
+        .step-icon {
+            background-color: var(--accent); color: white;
+            border-radius: 50%; width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 600; z-index: 2; flex-shrink: 0;
+        }
+
+        /* Contador */
+        .counter-section { background: var(--text-dark); color: white; text-align: center; }
+        .counter-section h2 { color: white; }
+        .counter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 60px; }
+        .counter-item .number { font-size: 3.5rem; font-weight: 700; color: var(--accent); }
+        .counter-item .text { color: #ccc; }
+
+        /* Sobre */
+        .about-section .container { max-width: 800px; text-align: center; }
+        .about-section h4 { color: var(--accent); font-weight: 700; margin-top: 30px; }
+        
+        /* FAQ */
+        .faq-container { max-width: 800px; margin: 60px auto 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border-color); }
+        .faq-item summary {
+            font-size: 1.2rem; font-weight: 600; padding: 25px 0;
+            cursor: pointer; list-style: none; position: relative;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { /* Ícone de seta */
+            content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; right: 10px; transition: transform 0.3s ease;
+        }
+        .faq-item[open] summary::after { transform: rotate(180deg); }
+        .faq-item .answer { padding: 0 10px 25px 10px; color: var(--text-light); }
+
+        /* Contato */
+        .contact-form-section .container { max-width: 700px; }
+        .contact-form-section form { margin-top: 50px; }
         .contact-form-section input, .contact-form-section textarea {
-            width: 100%; padding: 15px; margin-bottom: 20px;
-            border-radius: var(--border-radius); border: 1px solid #ccc;
-            font-family: 'Poppins', sans-serif; font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%; padding: 18px; margin-bottom: 20px;
+            border-radius: var(--border-radius); border: 1px solid var(--border-color);
+            font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 400;
+            background: var(--bg-soft-gray); transition: all 0.3s ease;
         }
+        .contact-form-section input::placeholder, .contact-form-section textarea::placeholder { color: #999; }
         .contact-form-section input:focus, .contact-form-section textarea:focus {
-            outline: none; border-color: var(--cta-color);
-            box-shadow: 0 0 0 3px rgba(217, 131, 36, 0.2);
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-light);
         }
-        .contact-form-section button { width: 100%; border: none; cursor: pointer; }
+        .contact-form-section .cta-button { width: 100%; border: none; font-size: 1.1rem; }
         .contact-info { margin-top: 50px; text-align: center; }
-        .contact-info p { margin-bottom: 10px; }
 
-        /* FOOTER */
-        footer { background: #f8f9fa; text-align: center; padding: 40px 0; border-top: 1px solid #eee; }
+        /* Footer */
+        footer { background: var(--text-dark); color: #a9a9a9; text-align: center; padding: 50px 0; }
+        footer .logo img { filter: brightness(0) invert(1); opacity: 0.8; height: 40px; margin-bottom: 20px; }
+        footer .footer-nav { list-style: none; display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
+        footer .footer-nav a { color: #a9a9a9; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+        footer .footer-nav a:hover { color: white; }
 
-        /* BOTÃO FLUTUANTE DO WHATSAPP */
+        /* WhatsApp Flutuante */
         .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: var(--whatsapp-color);
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 28px;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+            background-color: var(--whatsapp-color); color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 28px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: all 0.3s ease;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #1DA851;
+        .whatsapp-float:hover { transform: scale(1.1) translateY(-5px); }
+
+        /* Animações de Scroll */
+        .hidden { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .show { opacity: 1; transform: translateY(0); }
+        .feature-card:nth-child(2), .service-card:nth-child(2), .process-step:nth-child(2) { transition-delay: 200ms; }
+        .feature-card:nth-child(3), .service-card:nth-child(3), .process-step:nth-child(3) { transition-delay: 400ms; }
+        .process-step:nth-child(4) { transition-delay: 600ms; }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .services-grid { grid-template-columns: 1fr 1fr; }
         }
-
-        /* ANIMAÇÕES DE SCROLL */
-        .hidden {
-            opacity: 0;
-            filter: blur(5px);
-            transform: translateY(30px);
-            transition: all 1s ease-out;
-        }
-        .show { opacity: 1; filter: blur(0); transform: translateY(0); }
-        .point:nth-child(2), .process-step:nth-child(2), .service-card:nth-child(2) { transition-delay: 200ms; }
-        .point:nth-child(3), .process-step:nth-child(3), .service-card:nth-child(3) { transition-delay: 400ms; }
-        .point:nth-child(4), .process-step:nth-child(4) { transition-delay: 600ms; }
-        .manifesto-content.hidden, .intro-text.hidden { transition-delay: 200ms; }
-
-
-        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.8rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
             nav { display: none; }
-            main section { padding: 60px 0; }
-            .process-step { flex-direction: column; text-align: center; gap: 15px; }
-            .whatsapp-float {
-                width: 50px; height: 50px;
-                bottom: 20px; right: 20px;
-                font-size: 24px;
-            }
+            main section { padding: 80px 0; }
+            .services-grid { grid-template-columns: 1fr; }
+            .process-timeline::before { left: 14px; }
+            .step-icon { width: 30px; height: 30px; font-size: 1rem; }
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 24px; }
         }
     </style>
-    </head>
+</head>
 <body>
+
+    <div id="preloader"><div class="spinner"></div></div>
 
     <header>
         <div class="container">
@@ -229,12 +232,18 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#inicio" class="active">Início</a></li>
-                    <li><a href="#sobre">Nossa Causa</a></li>
-                    <li><a href="#processo">O Fluxo</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#inicio" class="active" data-key="navHome">Início</a></li>
+                    <li><a href="#diferenciais" data-key="navWhyUs">Diferenciais</a></li>
+                    <li><a href="#servicos" data-key="navSolutions">Soluções</a></li>
+                    <li><a href="#processo" data-key="navProcess">Nosso Fluxo</a></li>
+                    <li><a href="#sobre" data-key="navAbout">Quem Somos</a></li>
+                    <li><a href="#contato" data-key="navContact">Contato</a></li>
                 </ul>
+                <div class="lang-switcher">
+                    <button data-lang="pt" class="active">PT</button>
+                    <button data-lang="en">EN</button>
+                    <button data-lang="es">ES</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -243,131 +252,186 @@
 
         <section id="inicio" class="hero">
             <div class="container">
-                <h1>Sua marca não precisa de mais ruído. Precisa de um fluxo.</h1>
-                <p>Transformamos a complexidade das redes sociais em um fluxo contínuo de crescimento para marcas no Brasil e em Portugal.</p>
-                <a href="#processo" class="cta-button">Conheça o nosso fluxo</a>
+                <h1 class="hidden" data-key="heroTitle">Marcas que dialogam. Resultados que comprovam.</h1>
+                <p class="hidden" data-key="heroSubtitle">Somos o parceiro estratégico que seu negócio precisa para transformar presença digital em crescimento real. Com uma perspectiva criativa e alcance global.</p>
+                <a href="#servicos" class="cta-button hidden" data-key="heroCTA">Conheça nossas soluções</a>
             </div>
         </section>
 
-        <section class="pain-points hidden">
+        <section id="diferenciais">
             <div class="container">
-                <h2>O universo digital parece caótico? Nós entendemos.</h2>
-                <div class="points-grid">
-                    <div class="point hidden">
-                        <h3><i class="fas fa-bullhorn"></i> Voz Perdida</h3>
-                        <p>Você posta, posta, posta... mas sente que está falando sozinho.</p>
+                 <span class="section-subtitle hidden" data-key="featuresSubtitle">Por que nós?</span>
+                <h2 class="hidden" data-key="featuresTitle">Elevamos sua marca, não apenas seu perfil.</h2>
+                <div class="features-grid">
+                    <div class="feature-card hidden">
+                        <div class="icon"><i class="fas fa-brain"></i></div>
+                        <h3 data-key="feature1Title">Estratégia Primeiro</h3>
+                        <p data-key="feature1Text">Cada ação é pensada. Não postamos por postar. Criamos sistemas de comunicação que geram resultados consistentes.</p>
                     </div>
-                    <div class="point hidden">
-                        <h3><i class="fas fa-chart-line"></i> Algoritmos Misteriosos</h3>
-                        <p>As regras do jogo mudam toda hora e parece impossível acompanhar.</p>
+                    <div class="feature-card hidden">
+                        <div class="icon"><i class="fas fa-handshake"></i></div>
+                        <h3 data-key="feature2Title">Parceria Real</h3>
+                        <p data-key="feature2Text">Atuamos como uma extensão do seu time. Seu sucesso é a nossa principal métrica de desempenho.</p>
                     </div>
-                    <div class="point hidden">
-                        <h3><i class="fas fa-hand-holding-usd"></i> Resultados Frustrantes</h3>
-                        <p>O número de seguidores sobe, mas o faturamento continua o mesmo.</p>
-                    </div>
-                    <div class="point hidden">
-                        <h3><i class="fas fa-clock"></i> Tempo Escasso</h3>
-                        <p>Sua energia deveria estar focada no seu negócio, não nas redes sociais.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="sobre" class="solution hidden">
-            <div class="container">
-                <h2>Nossa causa é a conexão.</h2>
-                <div class="manifesto-content hidden">
-                    <h3>Manifesto Afluente Mídia</h3>
-                    <p>O digital virou ruído. Uma cacofonia de algoritmos frios, métricas de vaidade e vozes que gritam, mas nada dizem. Nós nascemos da recusa a este cenário.</p>
-                    <p><strong>Nós acreditamos em fluxo, não em interrupção.</strong> Acreditamos que a verdadeira comunicação não invade, mas convida.</p>
-                    <p><strong>Nós acreditamos no poder da nascente.</strong> Nossa base em Cuiabá não é uma limitação; é nossa fonte de identidade. É o calor humano que derrete a frieza dos dados.</p>
-                    <p><strong>Nós acreditamos em pessoas, não em avatares.</strong> Por trás de cada tela, existe uma história. Nosso trabalho é criar conversas.</p>
-                    <p><strong>Por isso, nós rejeitamos.</strong> O marketing autômato, a tirania dos números de vaidade e a agência que se esconde atrás de relatórios impessoais.</p>
-                    <h4>Do coração do Brasil, para o coração da sua marca.</h4>
-                </div>
-            </div>
-        </section>
-        
-        <section id="processo" class="process-section hidden">
-            <div class="container">
-                <h2>Grandes resultados não nascem do acaso. Nascem de um fluxo claro.</h2>
-                <p class="intro-text">A confiança é a base de qualquer parceria. Por isso, nosso processo é 100% transparente. Cada etapa foi desenhada para garantir que estamos sempre alinhados.</p>
-                <div class="process-grid">
-                    <div class="process-step hidden">
-                        <div class="step-number">1</div>
-                        <div>
-                            <h3>IMERSÃO (A Nascente)</h3>
-                            <p>Mergulhamos fundo no seu universo: sua história, seus desafios, seu público e seus concorrentes.</p>
-                        </div>
-                    </div>
-                    <div class="process-step hidden">
-                        <div class="step-number">2</div>
-                        <div>
-                            <h3>ESTRATÉGIA (O Mapa do Rio)</h3>
-                            <p>Com o diagnóstico em mãos, desenhamos o caminho, definindo os pilares de conteúdo e a voz da sua marca.</p>
-                        </div>
-                    </div>
-                    <div class="process-step hidden">
-                        <div class="step-number">3</div>
-                        <div>
-                            <h3>CRIAÇÃO E GESTÃO (A Correnteza)</h3>
-                            <p>Damos vida à estratégia, produzindo conteúdos e nutrindo o relacionamento com seu público.</p>
-                        </div>
-                    </div>
-                    <div class="process-step hidden">
-                        <div class="step-number">4</div>
-                        <div>
-                            <h3>ANÁLISE E EVOLUÇÃO (A Foz)</h3>
-                            <p>Analisamos mensalmente os dados e otimizamos a rota constantemente para garantir que sua marca prospere.</p>
-                        </div>
+                    <div class="feature-card hidden">
+                        <div class="icon"><i class="fas fa-globe"></i></div>
+                        <h3 data-key="feature3Title">Perspectiva Global</h3>
+                        <p data-key="feature3Text">Nossa origem autêntica nos permite criar estratégias com alma, conectando sua marca com mercados diversos.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section id="servicos" class="services-section hidden">
-             <div class="container">
-                <h2>Soluções que geram movimento.</h2>
-                <p class="intro-text">Seja qual for o estágio da sua marca, temos uma solução para criar um fluxo de comunicação poderoso e contínuo.</p>
+        <section id="servicos" class="services-section">
+            <div class="container">
+                <span class="section-subtitle hidden" data-key="servicesSubtitle">Nosso Ecossistema</span>
+                <h2 class="hidden" data-key="servicesTitle">Soluções digitais que impulsionam seu negócio.</h2>
                 <div class="services-grid">
                     <div class="service-card hidden">
-                        <h3>Gestão de Fluxo Contínuo</h3>
-                        <p>A parceria ideal para quem busca tranquilidade e resultados constantes. Cuidamos de tudo: da estratégia à execução. Foque no seu negócio.</p>
-                        <a href="#contato" class="cta-button secondary">Quero saber mais</a>
+                        <div class="icon"><i class="fas fa-satellite-dish"></i></div>
+                        <h3 data-key="service1Title">Gestão Completa 360°</h3>
+                        <p data-key="service1Text">Nossa solução completa para marcas que desejam paz de espírito e performance máxima, do planejamento à análise.</p>
+                        <ul>
+                            <li data-key="service1Item1"><i class="fas fa-check-circle"></i>Planejamento e Estratégia de Conteúdo</li>
+                            <li data-key="service1Item2"><i class="fas fa-check-circle"></i>Produção Criativa (Design & Copy)</li>
+                            <li data-key="service1Item3"><i class="fas fa-check-circle"></i>Gestão de Comunidade e Interação</li>
+                            <li data-key="service1Item4"><i class="fas fa-check-circle"></i>Análise de Dados e Relatórios Mensais</li>
+                            <li data-key="service1Item5"><i class="fas fa-check-circle"></i>Gestão de Anúncios (Tráfego Pago)</li>
+                        </ul>
                     </div>
                     <div class="service-card hidden">
-                        <h3>Impulso Estratégico</h3>
-                        <p>Você tem uma equipe interna, mas sente que falta uma direção? Oferecemos um diagnóstico profundo e um plano de ação claro para destravar seu potencial.</p>
-                        <a href="#contato" class="cta-button secondary">Quero saber mais</a>
+                        <div class="icon"><i class="fas fa-map-signs"></i></div>
+                        <h3 data-key="service2Title">Consultoria Estratégica</h3>
+                        <p data-key="service2Text">O mapa que sua equipe interna precisa para navegar com confiança e otimizar seus próprios recursos.</p>
+                         <ul>
+                            <li data-key="service2Item1"><i class="fas fa-check-circle"></i>Diagnóstico Completo da Presença Digital</li>
+                            <li data-key="service2Item2"><i class="fas fa-check-circle"></i>Desenvolvimento de Plano de Ação</li>
+                            <li data-key="service2Item3"><i class="fas fa-check-circle"></i>Definição de Persona e Tom de Voz</li>
+                            <li data-key="service2Item4"><i class="fas fa-check-circle"></i>Análise Competitiva e de Mercado</li>
+                            <li data-key="service2Item5"><i class="fas fa-check-circle"></i>Sessões de Acompanhamento e Mentoria</li>
+                        </ul>
                     </div>
                     <div class="service-card hidden">
-                        <h3>Projeto Nascente</h3>
-                        <p>Perfeito para marcas que estão começando. Estruturamos seus perfis do zero e criamos o plano de conteúdo inicial para você começar com uma base sólida.</p>
-                        <a href="#contato" class="cta-button secondary">Quero saber mais</a>
+                        <div class="icon"><i class="fas fa-rocket"></i></div>
+                        <h3 data-key="service3Title">Projetos de Lançamento</h3>
+                        <p data-key="service3Text">Para novas marcas ou produtos que precisam chegar ao mercado causando um impacto inesquecível.</p>
+                         <ul>
+                            <li data-key="service3Item1"><i class="fas fa-check-circle"></i>Estratégia de Lançamento End-to-End</li>
+                            <li data-key="service3Item2"><i class="fas fa-check-circle"></i>Criação de Conteúdo de Aquecimento</li>
+                            <li data-key="service3Item3"><i class="fas fa-check-circle"></i>Campanhas de Anúncios Focadas</li>
+                            <li data-key="service3Item4"><i class="fas fa-check-circle"></i>Planejamento de Eventos Digitais</li>
+                            <li data-key="service3Item5"><i class="fas fa-check-circle"></i>Análise Pós-Lançamento</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="contact-form-section hidden">
+        <section id="processo" class="process-section">
             <div class="container">
-                <h2>Vamos iniciar este fluxo?</h2>
-                <p class="intro-text">Adoraríamos ouvir a história da sua marca. Preencha o formulário abaixo ou envie uma mensagem direta.</p>
-                <form action="https://formspree.io/f/mldwyjeo" method="POST">
-                    <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="empresa">Empresa / Marca</label>
-                    <input type="text" id="empresa" name="empresa">
-                    <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
-                    <button type="submit" class="cta-button">Enviar Mensagem</button>
+                <span class="section-subtitle hidden" data-key="processSubtitle">Nossa Metodologia</span>
+                <h2 class="hidden" data-key="processTitle">Seu sucesso é um processo, não um acaso.</h2>
+                <div class="process-timeline">
+                    <div class="process-step hidden">
+                        <div class="step-icon">1</div>
+                        <div class="step-content">
+                            <h3 data-key="process1Title">Imersão & Diagnóstico</h3>
+                            <p data-key="process1Text">Mergulhamos no seu negócio, mercado e objetivos para entender sua essência e desafios. É a base de toda a estratégia.</p>
+                        </div>
+                    </div>
+                    <div class="process-step hidden">
+                        <div class="step-icon">2</div>
+                        <div class="step-content">
+                            <h3 data-key="process2Title">Planejamento Estratégico</h3>
+                            <p data-key="process2Text">Traduzimos o diagnóstico em um plano de ação claro: definimos canais, editorias, voz e os KPIs que realmente importam.</p>
+                        </div>
+                    </div>
+                    <div class="process-step hidden">
+                        <div class="step-icon">3</div>
+                        <div class="step-content">
+                            <h3 data-key="process3Title">Execução & Criatividade</h3>
+                            <p data-key="process3Text">É aqui que a estratégia ganha vida. Criamos, publicamos e gerenciamos o conteúdo, sempre buscando a excelência e a conexão.</p>
+                        </div>
+                    </div>
+                     <div class="process-step hidden">
+                        <div class="step-icon">4</div>
+                        <div class="step-content">
+                            <h3 data-key="process4Title">Análise & Otimização</h3>
+                            <p data-key="process4Text">Analisamos os dados para entender o que funciona, otimizamos o que pode melhorar e escalamos os resultados, em um ciclo de melhoria contínua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="counter" class="counter-section">
+            <div class="container">
+                 <h2 class="hidden" data-key="counterTitle">Nossa jornada em números</h2>
+                 <div class="counter-grid">
+                     <div class="counter-item hidden">
+                         <div class="number" data-target="50">0</div>
+                         <div class="text" data-key="counter1Text">Projetos Lançados</div>
+                     </div>
+                      <div class="counter-item hidden">
+                         <div class="number" data-target="98">0</div>
+                         <div class="text" data-key="counter2Text">% de Clientes Satisfeitos</div>
+                     </div>
+                      <div class="counter-item hidden">
+                         <div class="number" data-target="1200">0</div>
+                         <div class="text" data-key="counter3Text">Xícaras de Café</div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="about-section">
+            <div class="container">
+                <span class="section-subtitle hidden" data-key="aboutSubtitle">Nossa Origem, Sua Vantagem</span>
+                <h2 class="hidden" data-key="aboutTitle">Nascemos de uma perspectiva autêntica. Pensamos para o mundo.</h2>
+                <p class="hidden" data-key="aboutText1">A Afluente Mídia nasceu de uma convicção: a grande estratégia digital não tem CEP. Nossa origem nos dá uma perspectiva única e uma autenticidade que marcas de grandes centros buscam incansavelmente. Combinamos o calor humano e a garra de uma cultura vibrante com uma visão de mercado global.</p>
+                <p class="hidden" data-key="aboutText2">Nós acreditamos em um marketing que flui, que conecta e que, acima de tudo, honra a verdade de cada marca. Essa é a nossa causa.</p>
+                <h4 class="hidden" data-key="aboutTagline">Afluente Mídia. O fluxo que gera resultados.</h4>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <span class="section-subtitle hidden" data-key="faqSubtitle">Dúvidas?</span>
+                <h2 class="hidden" data-key="faqTitle">Perguntas Frequentes</h2>
+                <div class="faq-container">
+                    <details class="faq-item hidden">
+                        <summary data-key="faq1Title">Quanto tempo leva para ver resultados?</summary>
+                        <div class="answer" data-key="faq1Text">Resultados iniciais de engajamento podem ser vistos no primeiro mês. Resultados consistentes de crescimento e conversão são construídos ao longo de um trimestre, solidificando a estratégia.</div>
+                    </details>
+                    <details class="faq-item hidden">
+                        <summary data-key="faq2Title">Vocês atendem clientes de quais segmentos?</summary>
+                        <div class="answer" data-key="faq2Text">Nossa metodologia é adaptável a diversos segmentos, de e-commerce e tecnologia a serviços e infoprodutos. O mais importante para nós é a parceria e o alinhamento de valores com o cliente.</div>
+                    </details>
+                     <details class="faq-item hidden">
+                        <summary data-key="faq3Title">Qual o valor do investimento?</summary>
+                        <div class="answer" data-key="faq3Text">Não trabalhamos com pacotes fixos, pois cada cliente tem uma necessidade única. Após uma conversa inicial para entender seu desafio, montamos uma proposta personalizada e transparente.</div>
+                    </details>
+                    <details class="faq-item hidden">
+                        <summary data-key="faq4Title">Preciso ter uma equipe interna de marketing?</summary>
+                        <div class="answer" data-key="faq4Text">Não necessariamente. Para a "Gestão Completa 360°", nós atuamos como seu time de marketing. Para a "Consultoria Estratégica", nós capacitamos e direcionamos a sua equipe existente.</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-form-section">
+            <div class="container">
+                <span class="section-subtitle hidden" data-key="contactSubtitle">Vamos Conversar?</span>
+                <h2 class="hidden" data-key="contactTitle">Inicie o fluxo da sua marca hoje.</h2>
+                <form action="https://formspree.io/f/mldwyjeo" method="POST" class="hidden">
+                    <input type="text" id="name" name="name" data-key="formName" placeholder="Seu nome" required>
+                    <input type="email" id="email" name="email" data-key="formEmail" placeholder="Seu melhor email" required>
+                    <input type="text" id="empresa" name="empresa" data-key="formCompany" placeholder="Nome da sua empresa">
+                    <textarea id="message" name="message" rows="6" data-key="formMessage" placeholder="Conte-nos um pouco sobre seu desafio..." required></textarea>
+                    <button type="submit" class="cta-button" data-key="formButton">Enviar Mensagem</button>
                 </form>
-                <div class="contact-info">
-                    <h3>Ou fale conosco diretamente:</h3>
-                    <p><strong>Email:</strong> afluentemidia@gmail.com</p>
-                    <p><strong>WhatsApp:</strong> +55 83 99699-9840</p>
+                <div class="contact-info hidden">
+                    <p data-key="contactDirect">Prefere um contato direto? <br><strong>Email:</strong> afluentemidia@gmail.com | <strong>WhatsApp:</strong> +55 83 99699-9840</p>
                 </div>
             </div>
         </section>
@@ -376,8 +440,14 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Afluente Mídia. Todos os direitos reservados.</p>
-            <p>Cuiabá, MT - Atendimento para todo o Brasil e Portugal.</p>
+            <a href="#inicio" class="logo"><img src="https://res.cloudinary.com/dwu4r8y1a/image/upload/v1758055427/Picsart_25-09-16_17-42-46-101_h0zjcu.png" alt="Logo Afluente Mídia"></a>
+             <ul class="footer-nav">
+                <li><a href="#servicos" data-key="navSolutions">Soluções</a></li>
+                <li><a href="#processo" data-key="navProcess">Nosso Fluxo</a></li>
+                <li><a href="#sobre" data-key="navAbout">Quem Somos</a></li>
+                <li><a href="#contato" data-key="navContact">Contato</a></li>
+            </ul>
+            <p data-key="footerRights">&copy; 2025 Afluente Mídia. Estratégia Digital com perspectiva autêntica e alcance global.</p>
         </div>
     </footer>
 
@@ -386,39 +456,216 @@
     </a>
 
     <script>
-        // Script para animação de scroll (Fade-in)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- TRADUÇÃO MULTILÍNGUE ---
+            const translations = {
+                en: {
+                    navHome: "Home", navWhyUs: "Why Us", navSolutions: "Solutions", navProcess: "Our Flow", navAbout: "About Us", navContact: "Contact",
+                    heroTitle: "Brands that converse. Results that prove it.",
+                    heroSubtitle: "We are the strategic partner your business needs to turn digital presence into real growth. With a creative perspective and global reach.",
+                    heroCTA: "Explore our solutions",
+                    featuresSubtitle: "Why Us?", featuresTitle: "We elevate your brand, not just your profile.",
+                    feature1Title: "Strategy First", feature1Text: "Every action is thought out. We don't just post. We create communication systems that generate consistent results.",
+                    feature2Title: "Real Partnership", feature2Text: "We act as an extension of your team. Your success is our main performance metric.",
+                    feature3Title: "Global Perspective", feature3Text: "Our authentic origin allows us to create strategies with soul, connecting your brand with diverse markets.",
+                    servicesSubtitle: "Our Ecosystem", servicesTitle: "Digital solutions that boost your business.",
+                    service1Title: "360° Full Management", service1Text: "Our complete solution for brands seeking peace of mind and maximum performance, from planning to analysis.",
+                    service1Item1: "Content Strategy & Planning", service1Item2: "Creative Production (Design & Copy)", service1Item3: "Community Management & Interaction", service1Item4: "Data Analysis & Monthly Reports", service1Item5: "Ad Management (Paid Traffic)",
+                    service2Title: "Strategic Consulting", service2Text: "The map your in-house team needs to navigate with confidence and optimize your own resources.",
+                    service2Item1: "Complete Digital Presence Diagnosis", service2Item2: "Action Plan Development", service2Item3: "Persona and Tone of Voice Definition", service2Item4: "Competitive and Market Analysis", service2Item5: "Follow-up and Mentoring Sessions",
+                    service3Title: "Launch Projects", service3Text: "For new brands or products that need to hit the market making an unforgettable impact.",
+                    service3Item1: "End-to-End Launch Strategy", service3Item2: "Warm-up Content Creation", service3Item3: "Focused Ad Campaigns", service3Item4: "Digital Events Planning", service3Item5: "Post-Launch Analysis",
+                    processSubtitle: "Our Methodology", processTitle: "Your success is a process, not a coincidence.",
+                    process1Title: "Immersion & Diagnosis", process1Text: "We dive deep into your business, market, and goals to understand your essence and challenges. It's the foundation of all strategy.",
+                    process2Title: "Strategic Planning", process2Text: "We translate the diagnosis into a clear action plan: defining channels, content pillars, voice, and the KPIs that truly matter.",
+                    process3Title: "Execution & Creativity", process3Text: "This is where strategy comes to life. We create, publish, and manage content, always striving for excellence and genuine connection.",
+                    process4Title: "Analysis & Optimization", process4Text: "We analyze data to understand what works, optimize what can be improved, and scale results in a cycle of continuous improvement.",
+                    counterTitle: "Our journey in numbers", counter1Text: "Projects Launched", counter2Text: "% Satisfied Clients", counter3Text: "Cups of Coffee",
+                    aboutSubtitle: "Our Origin, Your Advantage", aboutTitle: "Born from an authentic perspective. We think for the world.",
+                    aboutText1: "Afluente Mídia was born from a conviction: great digital strategy has no zip code. Our origin gives us a unique perspective and an authenticity that brands in large centers tirelessly seek. We combine the human warmth and grit of a vibrant culture with a global market vision.",
+                    aboutText2: "We believe in marketing that flows, that connects, and that, above all, honors the truth of each brand. This is our cause.",
+                    aboutTagline: "Afluente Mídia. The flow that generates results.",
+                    faqSubtitle: "Doubts?", faqTitle: "Frequently Asked Questions",
+                    faq1Title: "How long does it take to see results?", faq1Text: "Initial engagement results can be seen in the first month. Consistent growth and conversion results are built over a quarter, solidifying the strategy.",
+                    faq2Title: "Which client segments do you serve?", faq2Text: "Our methodology is adaptable to various segments, from e-commerce and tech to services and digital products. The most important thing for us is the partnership and alignment of values with the client.",
+                    faq3Title: "What is the investment amount?", faq3Text: "We don't work with fixed packages, as each client has unique needs. After an initial conversation to understand your challenge, we create a customized and transparent proposal.",
+                    faq4Title: "Do I need an in-house marketing team?", faq4Text: "Not necessarily. For '360° Full Management', we act as your marketing team. For 'Strategic Consulting', we train and direct your existing team.",
+                    contactSubtitle: "Shall we talk?", contactTitle: "Start your brand's flow today.",
+                    formName: "Your name", formEmail: "Your best email", formCompany: "Your company name", formMessage: "Tell us a bit about your challenge...", formButton: "Send Message",
+                    contactDirect: "Prefer direct contact? <br><strong>Email:</strong> afluentemidia@gmail.com | <strong>WhatsApp:</strong> +55 83 99699-9840",
+                    footerRights: "© 2025 Afluente Mídia. Digital Strategy with an authentic perspective and global reach."
+                },
+                es: {
+                    navHome: "Inicio", navWhyUs: "Diferenciales", navSolutions: "Soluciones", navProcess: "Nuestro Flujo", navAbout: "Quiénes Somos", navContact: "Contacto",
+                    heroTitle: "Marcas que dialogan. Resultados que comprueban.",
+                    heroSubtitle: "Somos el socio estratégico que tu negocio necesita para transformar la presencia digital en crecimiento real. Con una perspectiva creativa y alcance global.",
+                    heroCTA: "Conoce nuestras soluciones",
+                    featuresSubtitle: "¿Por qué nosotros?", featuresTitle: "Elevamos tu marca, no solo tu perfil.",
+                    feature1Title: "Estrategia Primero", feature1Text: "Cada acción es pensada. No publicamos por publicar. Creamos sistemas de comunicación que generan resultados consistentes.",
+                    feature2Title: "Alianza Real", feature2Text: "Actuamos como una extensión de tu equipo. Tu éxito es nuestra principal métrica de rendimiento.",
+                    feature3Title: "Perspectiva Global", feature3Text: "Nuestro origen auténtico nos permite crear estrategias con alma, conectando tu marca con mercados diversos.",
+                    servicesSubtitle: "Nuestro Ecosistema", servicesTitle: "Soluciones digitales que impulsan tu negocio.",
+                    service1Title: "Gestión Completa 360°", service1Text: "Nuestra solución completa para marcas que desean tranquilidad y máximo rendimiento, desde la planificación hasta el análisis.",
+                    service1Item1: "Planificación y Estrategia de Contenido", service1Item2: "Producción Creativa (Diseño & Copy)", service1Item3: "Gestión de Comunidad e Interacción", service1Item4: "Análisis de Datos e Informes Mensuales", service1Item5: "Gestión de Anuncios (Tráfico de Pago)",
+                    service2Title: "Consultoría Estratégica", service2Text: "El mapa que tu equipo interno necesita para navegar con confianza y optimizar sus propios recursos.",
+                    service2Item1: "Diagnóstico Completo de Presencia Digital", service2Item2: "Desarrollo de Plan de Acción", service2Item3: "Definición de Persona y Tono de Voz", service2Item4: "Análisis Competitivo y de Mercado", service2Item5: "Sesiones de Seguimiento y Mentoría",
+                    service3Title: "Proyectos de Lanzamiento", service3Text: "Para nuevas marcas o productos que necesitan llegar al mercado causando un impacto inolvidable.",
+                    service3Item1: "Estrategia de Lanzamiento End-to-End", service3Item2: "Creación de Contenido de Calentamiento", service3Item3: "Campañas de Anuncios Enfocadas", service3Item4: "Planificación de Eventos Digitales", service3Item5: "Análisis Post-Lanzamiento",
+                    processSubtitle: "Nuestra Metodología", processTitle: "Tu éxito es un proceso, no una casualidad.",
+                    process1Title: "Inmersión & Diagnóstico", process1Text: "Nos sumergimos en tu negocio, mercado y objetivos para entender tu esencia y desafíos. Es la base de toda estrategia.",
+                    process2Title: "Planificación Estratégica", process2Text: "Traducimos el diagnóstico en un plan de acción claro: definimos canales, pilares de contenido, voz y los KPIs que realmente importan.",
+                    process3Title: "Ejecución & Creatividad", process3Text: "Aquí es donde la estrategia cobra vida. Creamos, publicamos y gestionamos el contenido, siempre buscando la excelencia y la conexión.",
+                    process4Title: "Análisis & Optimización", process4Text: "Analizamos los datos para entender qué funciona, optimizamos lo que se puede mejorar y escalamos los resultados en un ciclo de mejora continua.",
+                    counterTitle: "Nuestro viaje en números", counter1Text: "Proyectos Lanzados", counter2Text: "% Clientes Satisfechos", counter3Text: "Tazas de Café",
+                    aboutSubtitle: "Nuestro Origen, Tu Ventaja", aboutTitle: "Nacimos de una perspectiva auténtica. Pensamos para el mundo.",
+                    aboutText1: "Afluente Mídia nació de una convicción: la gran estrategia digital no tiene código postal. Nuestro origen nos da una perspectiva única y una autenticidad que las marcas de grandes centros buscan incansablemente. Combinamos el calor humano y el coraje de una cultura vibrante con una visión de mercado global.",
+                    aboutText2: "Creemos en un marketing que fluye, que conecta y que, sobre todo, honra la verdad de cada marca. Esa es nuestra causa.",
+                    aboutTagline: "Afluente Mídia. El flujo que genera resultados.",
+                    faqSubtitle: "¿Dudas?", faqTitle: "Preguntas Frecuentes",
+                    faq1Title: "¿Cuánto tiempo se tarda en ver resultados?", faq1Text: "Los resultados iniciales de interacción se pueden ver en el primer mes. Los resultados consistentes de crecimiento y conversión se construyen a lo largo de un trimestre, consolidando la estrategia.",
+                    faq2Title: "¿A qué segmentos de clientes atienden?", faq2Text: "Nuestra metodología es adaptable a diversos segmentos, desde e-commerce y tecnología hasta servicios y productos digitales. Lo más importante para nosotros es la alianza y la alineación de valores con el cliente.",
+                    faq3Title: "¿Cuál es el monto de la inversión?", faq3Text: "No trabajamos con paquetes fijos, ya que cada cliente tiene necesidades únicas. Tras una conversación inicial para entender tu desafío, elaboramos una propuesta personalizada y transparente.",
+                    faq4Title: "¿Necesito tener un equipo de marketing interno?", faq4Text: "No necesariamente. Para la 'Gestión Completa 360°', actuamos como tu equipo de marketing. Para la 'Consultoría Estratégica', capacitamos y dirigimos a tu equipo existente.",
+                    contactSubtitle: "¿Hablamos?", contactTitle: "Inicia el flujo de tu marca hoy.",
+                    formName: "Tu nombre", formEmail: "Tu mejor email", formCompany: "Nombre de tu empresa", formMessage: "Cuéntanos un poco sobre tu desafío...", formButton: "Enviar Mensaje",
+                    contactDirect: "¿Prefieres un contacto directo? <br><strong>Email:</strong> afluentemidia@gmail.com | <strong>WhatsApp:</strong> +55 83 99699-9840",
+                    footerRights: "© 2025 Afluente Mídia. Estrategia Digital con perspectiva auténtica y alcance global."
+                },
+                pt: {
+                    navHome: "Início", navWhyUs: "Diferenciais", navSolutions: "Soluções", navProcess: "Nosso Fluxo", navAbout: "Quem Somos", navContact: "Contato",
+                    heroTitle: "Marcas que dialogam. Resultados que comprovam.",
+                    heroSubtitle: "Somos o parceiro estratégico que seu negócio precisa para transformar presença digital em crescimento real. Com uma perspectiva criativa e alcance global.",
+                    heroCTA: "Conheça nossas soluções",
+                    featuresSubtitle: "Por que nós?", featuresTitle: "Elevamos sua marca, não apenas seu perfil.",
+                    feature1Title: "Estratégia Primeiro", feature1Text: "Cada ação é pensada. Não postamos por postar. Criamos sistemas de comunicação que geram resultados consistentes.",
+                    feature2Title: "Parceria Real", feature2Text: "Atuamos como uma extensão do seu time. Seu sucesso é a nossa principal métrica de desempenho.",
+                    feature3Title: "Perspectiva Global", feature3Text: "Nossa origem autêntica nos permite criar estratégias com alma, conectando sua marca com mercados diversos.",
+                    servicesSubtitle: "Nosso Ecossistema", servicesTitle: "Soluções digitais que impulsionam seu negócio.",
+                    service1Title: "Gestão Completa 360°", service1Text: "Nossa solução completa para marcas que desejam paz de espírito e performance máxima, do planejamento à análise.",
+                    service1Item1: "Planejamento e Estratégia de Conteúdo", service1Item2: "Produção Criativa (Design & Copy)", service1Item3: "Gestão de Comunidade e Interação", service1Item4: "Análise de Dados e Relatórios Mensais", service1Item5: "Gestão de Anúncios (Tráfego Pago)",
+                    service2Title: "Consultoria Estratégica", service2Text: "O mapa que sua equipe interna precisa para navegar com confiança e otimizar seus próprios recursos.",
+                    service2Item1: "Diagnóstico Completo da Presença Digital", service2Item2: "Desenvolvimento de Plano de Ação", service2Item3: "Definição de Persona e Tom de Voz", service2Item4: "Análise Competitiva e de Mercado", service2Item5: "Sessões de Acompanhamento e Mentoria",
+                    service3Title: "Projetos de Lançamento", service3Text: "Para novas marcas ou produtos que precisam chegar ao mercado causando um impacto inesquecível.",
+                    service3Item1: "Estratégia de Lançamento End-to-End", service3Item2: "Criação de Conteúdo de Aquecimento", service3Item3: "Campanhas de Anúncios Focadas", service3Item4: "Planejamento de Eventos Digitais", service3Item5: "Análise Pós-Lançamento",
+                    processSubtitle: "Nossa Metodologia", processTitle: "Seu sucesso é um processo, não um acaso.",
+                    process1Title: "Imersão & Diagnóstico", process1Text: "Mergulhamos no seu negócio, mercado e objetivos para entender sua essência e desafios. É a base de toda a estratégia.",
+                    process2Title: "Planejamento Estratégico", process2Text: "Traduzimos o diagnóstico em um plano de ação claro: definimos canais, editorias, voz e os KPIs que realmente importam.",
+                    process3Title: "Execução & Criatividade", process3Text: "É aqui que a estratégia ganha vida. Criamos, publicamos e gerenciamos o conteúdo, sempre buscando a excelência e a conexão.",
+                    process4Title: "Análise & Otimização", process4Text: "Analisamos os dados para entender o que funciona, otimizamos o que pode melhorar e escalamos os resultados, em um ciclo de melhoria contínua.",
+                    counterTitle: "Nossa jornada em números", counter1Text: "Projetos Lançados", counter2Text: "% de Clientes Satisfeitos", counter3Text: "Xícaras de Café",
+                    aboutSubtitle: "Nossa Origem, Sua Vantagem", aboutTitle: "Nascemos de uma perspectiva autêntica. Pensamos para o mundo.",
+                    aboutText1: "A Afluente Mídia nasceu de uma convicção: a grande estratégia digital não tem CEP. Nossa origem nos dá uma perspectiva única e uma autenticidade que marcas de grandes centros buscam incansavelmente. Combinamos o calor humano e a garra de uma cultura vibrante com uma visão de mercado global.",
+                    aboutText2: "Nós acreditamos em um marketing que flui, que conecta e que, acima de tudo, honra a verdade de cada marca. Essa é a nossa causa.",
+                    aboutTagline: "Afluente Mídia. O fluxo que gera resultados.",
+                    faqSubtitle: "Dúvidas?", faqTitle: "Perguntas Frequentes",
+                    faq1Title: "Quanto tempo leva para ver resultados?", faq1Text: "Resultados iniciais de engajamento podem ser vistos no primeiro mês. Resultados consistentes de crescimento e conversão são construídos ao longo de um trimestre, solidificando a estratégia.",
+                    faq2Title: "Vocês atendem clientes de quais segmentos?", faq2Text: "Nossa metodologia é adaptável a diversos segmentos, de e-commerce e tecnologia a serviços e infoprodutos. O mais importante para nós é a parceria e o alinhamento de valores com o cliente.",
+                    faq3Title: "Qual o valor do investimento?", faq3Text: "Não trabalhamos com pacotes fixos, pois cada cliente tem uma necessidade única. Após uma conversa inicial para entender seu desafio, montamos uma proposta personalizada e transparente.",
+                    faq4Title: "Preciso ter uma equipe interna de marketing?", faq4Text: "Não necessariamente. Para a 'Gestão Completa 360°', nós atuamos como seu time de marketing. Para a 'Consultoria Estratégica', nós capacitamos e direcionamos a sua equipe existente.",
+                    contactSubtitle: "Vamos Conversar?", contactTitle: "Inicie o fluxo da sua marca hoje.",
+                    formName: "Seu nome", formEmail: "Seu melhor email", formCompany: "Nome da sua empresa", formMessage: "Conte-nos um pouco sobre seu desafio...", formButton: "Enviar Mensagem",
+                    contactDirect: "Prefere um contato direto? <br><strong>Email:</strong> afluentemidia@gmail.com | <strong>WhatsApp:</strong> +55 83 99699-9840",
+                    footerRights: "© 2025 Afluente Mídia. Estratégia Digital com perspectiva autêntica e alcance global."
                 }
-            });
-        });
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
+            };
 
-        // Script para destacar o link de navegação ativo ao rolar
-        const sections = document.querySelectorAll('main section[id]');
-        const navLinks = document.querySelectorAll('nav a');
+            const langSwitcher = document.querySelector('.lang-switcher');
+            const langButtons = langSwitcher.querySelectorAll('button');
+            let currentLang = localStorage.getItem('lang') || 'pt';
 
-        const navObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translations[lang][key];
+                        } else {
+                            element.innerHTML = translations[lang][key];
                         }
-                    });
+                    }
+                });
+                document.documentElement.lang = lang;
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+                localStorage.setItem('lang', lang);
+            };
+
+            langSwitcher.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    currentLang = e.target.dataset.lang;
+                    translatePage(currentLang);
                 }
             });
-        }, { rootMargin: '-40% 0px -60% 0px' }); 
+            
+            translatePage(currentLang); // Traduz a página no carregamento inicial
 
-        sections.forEach(section => {
-            navObserver.observe(section);
+            // --- PRELOADER ---
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+            });
+
+            // --- ANIMAÇÃO DE SCROLL (FADE-IN) ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.1 });
+            const hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
+
+            // --- ANIMAÇÃO DE NAVEGAÇÃO ATIVA ---
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px' }); 
+            sections.forEach(section => { navObserver.observe(section); });
+            
+            // --- ANIMAÇÃO DO CONTADOR ---
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.number');
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            counter.innerText = '0';
+                            const updateCount = () => {
+                                const current = +counter.innerText;
+                                const increment = target / 100; // Velocidade da animação
+
+                                if (current < target) {
+                                    counter.innerText = `${Math.ceil(current + increment)}`;
+                                    setTimeout(updateCount, 20);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCount();
+                        });
+                        observer.unobserve(entry.target); // Anima apenas uma vez
+                    }
+                });
+            }, { threshold: 0.5 });
+            const counterSection = document.getElementById('counter');
+            if(counterSection) {
+                 counterObserver.observe(counterSection);
+            }
         });
-
     </script>
-    </body>
+</body>
 </html>
